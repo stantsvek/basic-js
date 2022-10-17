@@ -14,10 +14,34 @@ const { NotImplementedError } = require('../extensions/index.js');
  * ]) => 3`
  *
  */
-function countCats(/* matrix */) {
-  throw new NotImplementedError('Not implemented');
+
+
+// return 0 if no cats found
+// "^^" - так котик себя выдает
+
+function countCats(...args) {
+  // throw new NotImplementedError('Not implemented');
   // remove line with error and write your code here
+	const arg = args[0];
+	let numberOfCats = 0;
+
+	for (let i = 0; i < arg.length; i++) { // обходим строчки
+    for (let j = 0; j < arg[i].length; j++) { // обходим внутренние элем
+      if (arg[i][j] === '^^') {
+				numberOfCats++;
+      }
+    }
+  }
+
+	if (numberOfCats > 0) {
+		return numberOfCats;
+	} else { return 0; }
 }
+// countCats([
+// 	['##', 'dd', '00'],
+// 	['^^', '..', 'ss'],
+// 	['AA', 'dd', 'Oo'],
+// ]);
 
 module.exports = {
   countCats
